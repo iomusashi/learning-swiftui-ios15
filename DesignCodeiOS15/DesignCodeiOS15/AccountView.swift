@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AccountView: View {
+    @State private var isDeleted = false
+    @State private var isMarkedAsDone = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -56,13 +59,38 @@ struct AccountView: View {
                 .listRowSeparator(.hidden)
                 
                 Section {
-                    Link(destination: URL(string: "https://example.org")!) {
-                        HStack {
-                            Label("Website", systemImage: "house")
-                            Spacer()
-                            Image(systemName: "link")
-                                .foregroundColor(.secondary)
+                    if !isDeleted {
+                        Link(destination: URL(string: "https://example.org")!) {
+                            HStack {
+                                Label {
+                                    if isMarkedAsDone {
+                                        Text("Website")
+                                            .strikethrough()
+                                    } else {
+                                        Text("Website")
+                                    }
+                                } icon: { Image(systemName: "house") }
+                                Spacer()
+                                Image(systemName: "link")
+                                    .foregroundColor(.secondary)
+                            }
                         }
+                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                            Button {
+                                isDeleted = true
+                            } label: {
+                                Label("Archive", systemImage: "trash")
+                            }
+                            .tint(.red)
+                        }
+                        .swipeActions(edge: .trailing) {
+                            Button {
+                                isMarkedAsDone.toggle()
+                            } label: {
+                                Label("Mark as Done", systemImage: "checkmark")
+                            }
+                            .tint(.green)
+                    }
                     }
                     Link(destination: URL(string: "https://youtube.com")!) {
                         HStack {
