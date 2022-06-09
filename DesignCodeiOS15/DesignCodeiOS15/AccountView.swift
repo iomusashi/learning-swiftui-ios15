@@ -39,16 +39,43 @@ struct AccountView: View {
                 .padding()
                 
                 Section {
-                    Label("Settings", systemImage: "gear")
-                        .imageScale(.large)
-                    Label("Billing", systemImage: "creditcard")
-                        .imageScale(.large)
-                    Label("Help", systemImage: "questionmark")
-                        .imageScale(.large)
+                    NavigationLink { ContentView() } label: {
+                        Label("Settings", systemImage: "gear")
+                            .imageScale(.large)
+                    }
+                    NavigationLink { Text("Billing") } label: {
+                        Label("Billing", systemImage: "creditcard")
+                            .imageScale(.large)
+                    }
+                    NavigationLink { Text("Help") } label: {
+                        Label("Help", systemImage: "questionmark")
+                            .imageScale(.large)
+                    }
                 }
+                .accentColor(.primary)
                 .listRowSeparator(.hidden)
+                
+                Section {
+                    Link(destination: URL(string: "https://example.org")!) {
+                        HStack {
+                            Label("Website", systemImage: "house")
+                            Spacer()
+                            Image(systemName: "link")
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    Link(destination: URL(string: "https://youtube.com")!) {
+                        HStack {
+                            Label("Youtube", systemImage: "tv")
+                            Spacer()
+                            Image(systemName: "link")
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
+                .accentColor(.primary)
             }
-            .listStyle(.automatic)
+            .listStyle(.insetGrouped)
             .navigationTitle("Account")
         }
     }
