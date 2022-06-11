@@ -13,6 +13,7 @@
 		663B7B97283F949900B923F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663B7B96283F949900B923F1 /* Preview Assets.xcassets */; };
 		6676128A2851967F00240720 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667612892851967F00240720 /* Styles.swift */; };
 		6676128C2851C18B00240720 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676128B2851C18B00240720 /* AccountView.swift */; };
+		66ADD06D28545726004165EE /* HexagonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66ADD06C28545726004165EE /* HexagonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		663B7B96283F949900B923F1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		667612892851967F00240720 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		6676128B2851C18B00240720 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		66ADD06C28545726004165EE /* HexagonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexagonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				663B7B8F283F949800B923F1 /* DesignCodeiOS15App.swift */,
 				663B7B91283F949800B923F1 /* ContentView.swift */,
 				6676128B2851C18B00240720 /* AccountView.swift */,
+				66ADD06C28545726004165EE /* HexagonView.swift */,
 				667612892851967F00240720 /* Styles.swift */,
 				663B7B93283F949900B923F1 /* Assets.xcassets */,
 				663B7B95283F949900B923F1 /* Preview Content */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6676128C2851C18B00240720 /* AccountView.swift in Sources */,
+				66ADD06D28545726004165EE /* HexagonView.swift in Sources */,
 				6676128A2851967F00240720 /* Styles.swift in Sources */,
 				663B7B92283F949800B923F1 /* ContentView.swift in Sources */,
 				663B7B90283F949800B923F1 /* DesignCodeiOS15App.swift in Sources */,

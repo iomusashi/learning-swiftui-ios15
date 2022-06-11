@@ -32,18 +32,18 @@ struct ContentView: View {
                         endPoint: .bottomTrailing
                     )
                 )
-            Text(/*@START_MENU_TOKEN@*/"20 sections - 3 hours"/*@END_MENU_TOKEN@*/.uppercased())
+            Text("20 sections - 3 hours".uppercased())
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .foregroundStyle(.secondary)
-            Text(/*@START_MENU_TOKEN@*/"Build an iOS app for iOS 15 with custom layouts, animations and ..."/*@END_MENU_TOKEN@*/)
+            Text("Build an iOS app for iOS 15 with custom layouts, animations and ...")
                 .font(.footnote)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.secondary)
         }
-        .padding(/*@START_MENU_TOKEN@*/.all, 20.0/*@END_MENU_TOKEN@*/)
+        .padding(.all, 20.0)
         .padding(.vertical, 20)
         .frame(height: 350.0)
         .background(

@@ -34,10 +34,7 @@ struct AccountView: View {
                 .padding()
                 .background(.ultraThinMaterial, in: Circle())
                 .background(
-                    Image(systemName: "hexagon")
-                        .symbolVariant(.fill)
-                        .foregroundStyle(.blue)
-                        .font(.system(size: 200))
+                    HexagonView()
                         .offset(x: -50, y: -100)
                 )
             Text("@username")
