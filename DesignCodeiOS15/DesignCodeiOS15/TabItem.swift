@@ -11,13 +11,14 @@ struct TabItem: Identifiable {
     let id = UUID()
     var text: String
     var icon: String
+    var tab: Tab
 }
 
 extension TabItem {
     static let contentBarItems = [
-        TabItem(text: "Learn Now", icon: "house"),
-        TabItem(text: "Explore", icon: "magnifyingglass"),
-        TabItem(text: "Notifications", icon: "bell"),
-        TabItem(text: "Library", icon: "rectangle.stack"),
+        TabItem(text: "Learn Now", icon: "house", tab: .home),
+        TabItem(text: "Explore", icon: "magnifyingglass", tab: .explore),
+        TabItem(text: "Notifications", icon: "bell", tab: .notifications),
+        TabItem(text: "Library", icon: "rectangle.stack", tab: .library)
     ]
 }

@@ -8,22 +8,40 @@
 import SwiftUI
 
 struct TabBar: View {
+    @State private var selectedTab: Tab = .home
     var body: some View {
         ZStack(alignment: .bottom) {
-            ContentView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            Group {
+                switch selectedTab {
+                case .home:
+                    ContentView()
+                case .explore:
+                    AccountView()
+                case .notifications:
+                    AccountView()
+                case .library:
+                    AccountView()
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
             HStack {
                 ForEach(TabItem.contentBarItems) { item in
-                    VStack(spacing: 0) {
-                        Image(systemName: item.icon)
-                            .symbolVariant(.fill)
-                            .font(.body.bold())
-                            .frame(width: 44, height: 29)
-                        Text(item.text)
-                            .font(.caption2)
-                            .lineLimit(1)
+                    Button {
+                        selectedTab = item.tab
+                    } label: {
+                        VStack(spacing: 0) {
+                            Image(systemName: item.icon)
+                                .symbolVariant(.fill)
+                                .font(.body.bold())
+                                .frame(width: 44, height: 29)
+                            Text(item.text)
+                                .font(.caption2)
+                                .lineLimit(1)
+                        }
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(selectedTab == item.tab ? .primary : .secondary)
                 }
             }
             .padding(.horizontal, 8)
