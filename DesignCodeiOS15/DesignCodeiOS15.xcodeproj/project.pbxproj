@@ -10,6 +10,7 @@
 		662FAEF02854DA70001799A8 /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662FAEEF2854DA70001799A8 /* BlobView.swift */; };
 		6633481F285638ED0016A16F /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6633481E285638ED0016A16F /* TabItem.swift */; };
 		6633482128563C400016A16F /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6633482028563C400016A16F /* Tab.swift */; };
+		66334823285647800016A16F /* TabPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66334822285647800016A16F /* TabPreferenceKey.swift */; };
 		663B7B90283F949800B923F1 /* DesignCodeiOS15App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663B7B8F283F949800B923F1 /* DesignCodeiOS15App.swift */; };
 		663B7B92283F949800B923F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663B7B91283F949800B923F1 /* ContentView.swift */; };
 		663B7B94283F949900B923F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 663B7B93283F949900B923F1 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		662FAEEF2854DA70001799A8 /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		6633481E285638ED0016A16F /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		6633482028563C400016A16F /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		66334822285647800016A16F /* TabPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabPreferenceKey.swift; sourceTree = "<group>"; };
 		663B7B8C283F949800B923F1 /* DesignCodeiOS15.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignCodeiOS15.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		663B7B8F283F949800B923F1 /* DesignCodeiOS15App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeiOS15App.swift; sourceTree = "<group>"; };
 		663B7B91283F949800B923F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				6676128B2851C18B00240720 /* AccountView.swift */,
 				669A25662855A5A800958C53 /* TabBar.swift */,
 				6633481E285638ED0016A16F /* TabItem.swift */,
+				66334822285647800016A16F /* TabPreferenceKey.swift */,
 				6633482028563C400016A16F /* Tab.swift */,
 				662FAEEF2854DA70001799A8 /* BlobView.swift */,
 				66ADD06C28545726004165EE /* HexagonView.swift */,
@@ -166,6 +169,7 @@
 				662FAEF02854DA70001799A8 /* BlobView.swift in Sources */,
 				663B7B92283F949800B923F1 /* ContentView.swift in Sources */,
 				663B7B90283F949800B923F1 /* DesignCodeiOS15App.swift in Sources */,
+				66334823285647800016A16F /* TabPreferenceKey.swift in Sources */,
 				669A25672855A5A800958C53 /* TabBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
