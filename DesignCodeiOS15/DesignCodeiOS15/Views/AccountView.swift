@@ -57,7 +57,7 @@ struct AccountView: View {
     
     var menu: some View {
         Section {
-            NavigationLink { ContentView() } label: {
+            NavigationLink { HomeView() } label: {
                 Label("Settings", systemImage: "gear")
                     .imageScale(.large)
             }
