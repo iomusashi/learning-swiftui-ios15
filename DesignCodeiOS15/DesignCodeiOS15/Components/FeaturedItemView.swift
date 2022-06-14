@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct FeaturedItemView: View {
+    var course: Course
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
             Spacer()
-            Image("Logo 2")
+            Image(course.logo)
                 .resizable(resizingMode: .stretch)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 26.0, height: 26.0)
@@ -22,7 +24,7 @@ struct FeaturedItemView: View {
                     in: RoundedRectangle(cornerRadius: 16.0, style: .continuous)
                 )
                 .vibrantStrokeStyle(cornerRadius: 16.0)
-            Text("SwiftUI for iOS 15")
+            Text(course.title)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundStyle(
@@ -32,11 +34,12 @@ struct FeaturedItemView: View {
                         endPoint: .bottomTrailing
                     )
                 )
-            Text("20 sections - 3 hours".uppercased())
+                .lineLimit(1)
+            Text(course.subtitle.uppercased())
                 .font(.footnote)
                 .fontWeight(.semibold)
                 .foregroundStyle(.secondary)
-            Text("Build an iOS app for iOS 15 with custom layouts, animations and ...")
+            Text(course.text)
                 .font(.footnote)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2)
@@ -53,12 +56,8 @@ struct FeaturedItemView: View {
         .shadow(color: Color("Shadow").opacity(0.3), radius: 10, x: 0, y: 10)
         .vibrantStrokeStyle()
         .padding(.horizontal, 20)
-        .background(
-            Image("Blob 1")
-                .offset(x: 250, y: -100)
-        )
         .overlay(
-            Image("Illustration 5")
+            Image(course.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 230)
@@ -69,6 +68,6 @@ struct FeaturedItemView: View {
 
 struct FeaturedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedItemView()
+        FeaturedItemView(course: Course.fakeData.first!)
     }
 }
