@@ -36,8 +36,10 @@ struct HomeView: View {
             Color.clear.frame(height: 70)
         }
         .overlay(
-            NavigationBar(title: "Featured")
-                .opacity(hasScrolled ? 0 : 1)
+            NavigationBar(
+                title: "Featured",
+                hasScrolled: $hasScrolled
+            )
         )
     }
 }
