@@ -15,7 +15,7 @@ struct StrokeStyle: ViewModifier {
         content
             .overlay(
                 RoundedRectangle(
-                    cornerRadius: 30,
+                    cornerRadius: cornerRadius,
                     style: .continuous
                 )
                 .stroke(
