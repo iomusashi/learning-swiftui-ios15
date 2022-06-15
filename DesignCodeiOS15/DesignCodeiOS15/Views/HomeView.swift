@@ -21,14 +21,6 @@ struct HomeView: View {
                 Color.clear.frame(height: 1000)
             }
             .coordinateSpace(name: "scrollView")
-            .onPreferenceChange(
-                ScrollViewPreferenceKey.self,
-                perform: { value in
-                    withAnimation(.easeInOut) {
-                        hasScrolled = value < 0
-                    }
-                }
-            )
             .safeAreaInset(edge: .top) {
                 Color.clear.frame(height: 70)
             }
@@ -49,6 +41,14 @@ struct HomeView: View {
             )
         }
         .frame(height: .zero)
+        .onPreferenceChange(
+            ScrollViewPreferenceKey.self,
+            perform: { value in
+                withAnimation(.easeInOut) {
+                    hasScrolled = value < 0
+                }
+            }
+        )
     }
     
     var featuredTabView: some View {
