@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DesignCodeiOS15App: App {
+    @StateObject var tabState = TabState()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(tabState)
         }
     }
 }

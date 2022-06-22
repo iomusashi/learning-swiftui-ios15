@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CourseView: View {
+    @EnvironmentObject var tabState: TabState
     @Binding var show: Bool
     var namespace: Namespace.ID
     var course: Course = Course.fakeCourses[0]
@@ -117,6 +118,7 @@ private extension CourseView {
         Button {
             withAnimation(.closeCardSpring) {
                 show.toggle()
+                tabState.showDetail.toggle()
             }
         } label: {
             Image(systemName: "xmark")
@@ -180,5 +182,6 @@ struct CourseView_Previews: PreviewProvider {
             show: .constant(true),
             namespace: namespace
         )
+        .environmentObject(TabState())
     }
 }

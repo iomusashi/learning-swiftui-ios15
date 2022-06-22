@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var tabState: TabState
+    
     @State private var hasScrolled = true
     @State private var show = false
     @State private var showStatusBar = true
@@ -125,6 +127,7 @@ extension HomeView {
             .onTapGesture {
                 withAnimation(.openCardSpring) {
                     show.toggle()
+                    tabState.showDetail.toggle()
                     selectedCourseId = course.id
                 }
             }
@@ -172,5 +175,6 @@ struct HomeView_Previews: PreviewProvider {
             HomeView()
                 .preferredColorScheme(.dark)
         }
+        .environmentObject(TabState())
     }
 }
