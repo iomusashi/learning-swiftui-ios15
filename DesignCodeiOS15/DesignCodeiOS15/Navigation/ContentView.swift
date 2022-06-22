@@ -16,9 +16,13 @@ struct ContentView: View {
             case .home:
                 HomeView()
             case .explore:
-                AccountView()
+               Text("Explore")
+                    .font(.title)
+                    .foregroundColor(.primary)
             case .notifications:
-                AccountView()
+               Text("Notifications")
+                    .font(.title)
+                    .foregroundColor(.primary)
             case .library:
                 AccountView()
             }
