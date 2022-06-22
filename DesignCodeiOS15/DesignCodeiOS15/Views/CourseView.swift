@@ -14,6 +14,7 @@ struct CourseView: View {
     var course: Course = Course.fakeCourses[0]
     
     @State private var dragOffset: CGSize = .zero
+    @State private var isDraggable: Bool = true
     @State private var appear = [false, false, false]
 }
 
@@ -40,18 +41,7 @@ extension CourseView {
             .scaleEffect(dragOffset.width / -500 + 1)
             .background(.black.opacity(dragOffset.width / 500))
             .background(.ultraThinMaterial)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        guard value.translation.width > 0 else { return }
-                        dragOffset = value.translation
-                    }
-                    .onEnded { value in
-                        withAnimation(.closeCardSpring) {
-                            dragOffset = .zero
-                        }
-                    }
-            )
+            .gesture(isDraggable ? dragGesture : nil)
             .ignoresSafeArea()
             
             closeButton
@@ -187,6 +177,34 @@ private extension CourseView {
         }
         .padding(20)
     }
+    
+    var dragGesture: some Gesture {
+        DragGesture(
+            minimumDistance: 30,
+            coordinateSpace: .local
+        )
+        .onChanged { value in
+            guard value.translation.width > 0 else { return }
+            if value.startLocation.x < 100 {
+                withAnimation(.closeCardSpring) {
+                    dragOffset = value.translation
+                }
+            }
+            
+            if dragOffset.width > 120 {
+                closeOnDragThreshold()
+            }
+        }
+        .onEnded { value in
+            if dragOffset.width > 80 {
+                closeOnDragThreshold()
+            } else {
+                withAnimation(.closeCardSpring) {
+                    dragOffset = .zero
+                }
+            }
+        }
+    }
 }
 
 // MARK: Functions
@@ -208,6 +226,17 @@ private extension CourseView {
         appear[0] = false
         appear[1] = false
         appear[2] = false
+    }
+    
+    func closeOnDragThreshold() {
+        withAnimation(.closeCardSpring.delay(0.3)) {
+            show.toggle()
+            tabState.showDetail.toggle()
+        }
+        withAnimation(.closeCardSpring) {
+            dragOffset = .zero
+        }
+        isDraggable = false
     }
 }
 
