@@ -34,11 +34,20 @@ extension HomeView {
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
-                if !show {
-                    courseCards
-                } else {
-                    placeholderCards
+                
+                LazyVGrid(
+                    columns: [
+                        GridItem(.adaptive(minimum: 300), spacing: 20)
+                    ],
+                    spacing: 20
+                ) {
+                    if !show {
+                        courseCards
+                    } else {
+                        placeholderCards
+                    }
                 }
+                .padding(.horizontal, 20)
             }
             .coordinateSpace(name: "scrollView")
             .safeAreaInset(edge: .top) {
@@ -91,6 +100,8 @@ extension HomeView {
                 GeometryReader { proxy in
                     let minX = proxy.frame(in: .global).minX
                     FeaturedItemView(course: course)
+                        .frame(maxWidth: 500)
+                        .frame(maxWidth: .infinity)
                         .padding(.vertical, 40)
                         .rotation3DEffect(
                             .degrees(minX / -10),
