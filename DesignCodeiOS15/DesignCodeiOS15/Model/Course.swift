@@ -18,7 +18,7 @@ struct Course: Identifiable {
 }
 
 extension Course {
-    static var fakeFeaturedCourses: [Course] {
+    static var fakeFeaturedCourses: [Course] = {
         [
             Course(
                 title: "SwiftUI for iOS 15",
@@ -53,9 +53,9 @@ extension Course {
                 logo: "Logo 3"
             )
         ]
-    }
+    }()
     
-    static var fakeCourses: [Course] {
+    static var fakeCourses: [Course] = {
         [
             Course(
                 title: "SwiftUI for iOS 15",
@@ -90,5 +90,5 @@ extension Course {
                 logo: "Logo 1"
             )
         ]
-    }
+    }()
 }

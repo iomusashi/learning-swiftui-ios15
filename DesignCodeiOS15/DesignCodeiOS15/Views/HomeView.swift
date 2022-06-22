@@ -11,9 +11,14 @@ struct HomeView: View {
     @State private var hasScrolled = true
     @State private var show = false
     @State private var showStatusBar = true
+    @State private var selectedCourseId = UUID()
     
     @Namespace var namespace
-    
+}
+
+// MARK: Body
+
+extension HomeView {
     var body: some View {
         ZStack {
             Color("Background")
@@ -28,18 +33,9 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
                 if !show {
-                    ForEach(Course.fakeCourses) { course in
-                        CourseItemView(
-                            show: $show,
-                            namespace: namespace,
-                            course: course
-                        )
-                        .onTapGesture {
-                            withAnimation(.openCardSpring) {
-                                show.toggle()
-                            }
-                        }
-                    }
+                    courseCards
+                } else {
+                    placeholderCards
                 }
             }
             .coordinateSpace(name: "scrollView")
@@ -54,20 +50,7 @@ struct HomeView: View {
             )
             
             if show {
-                ForEach(Course.fakeCourses) { course in
-                    CourseView(
-                        show: $show,
-                        namespace: namespace,
-                        course: course
-                    )
-                    .zIndex(1)
-                    .transition(
-                        .asymmetric(
-                            insertion: .opacity.animation(.easeInOut(duration: 0.1)),
-                            removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))
-                        )
-                )
-                }
+                cardDetailView
             }
         }
         .statusBar(hidden: !showStatusBar)
@@ -77,7 +60,11 @@ struct HomeView: View {
             }
         }
     }
-    
+}
+
+// MARK: Internal Subviews
+
+extension HomeView {
     var scrollDetection: some View {
         GeometryReader { proxy in
             Color.clear.preference(
@@ -127,7 +114,56 @@ struct HomeView: View {
                 .offset(x: 250, y: -100)
         )
     }
+    
+    var courseCards: some View {
+        ForEach(Course.fakeCourses) { course in
+            CourseItemView(
+                show: $show,
+                namespace: namespace,
+                course: course
+            )
+            .onTapGesture {
+                withAnimation(.openCardSpring) {
+                    show.toggle()
+                    selectedCourseId = course.id
+                }
+            }
+        }
+    }
+    
+    var placeholderCards: some View {
+        ForEach(Course.fakeCourses) { _ in
+            Rectangle()
+                .fill(.white)
+                .frame(height: 300)
+                .cornerRadius(30)
+                .shadow(color: Color("Shadow"), radius: 20, x: 0, y: 10)
+                .opacity(0.3)
+                .padding(.horizontal, 30)
+        }
+    }
+    
+    var cardDetailView: some View {
+        ForEach(Course.fakeCourses) { course in
+            if course.id == selectedCourseId {
+                CourseView(
+                    show: $show,
+                    namespace: namespace,
+                    course: course
+                )
+                .zIndex(1)
+                .transition(
+                    .asymmetric(
+                        insertion: .opacity.animation(.easeInOut(duration: 0.1)),
+                        removal: .opacity.animation(.easeInOut(duration: 0.3).delay(0.2))
+                    )
+                )
+            }
+        }
+    }
 }
+
+// MARK: Preview
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
