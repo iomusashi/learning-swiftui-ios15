@@ -9,6 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var hasScrolled = true
+    @State var show = false
+    
+    @Namespace var namespace
     
     var body: some View {
         ZStack {
@@ -18,7 +21,22 @@ struct HomeView: View {
             ScrollView {
                 scrollDetection
                 featuredTabView
-                Color.clear.frame(height: 1000)
+                Text("Courses".uppercased())
+                    .font(.footnote.weight(.semibold))
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 20)
+                if !show {
+                    CourseItemView(
+                        show: $show,
+                        namespace: namespace
+                    )
+                    .onTapGesture {
+                        withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                            show.toggle()
+                        }
+                    }
+                }
             }
             .coordinateSpace(name: "scrollView")
             .safeAreaInset(edge: .top) {
@@ -30,6 +48,13 @@ struct HomeView: View {
                     hasScrolled: $hasScrolled
                 )
             )
+            
+            if show {
+                CourseView(
+                    show: $show,
+                    namespace: namespace
+                )
+            }
         }
     }
     
