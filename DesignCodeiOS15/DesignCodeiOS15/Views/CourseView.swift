@@ -13,6 +13,7 @@ struct CourseView: View {
     var namespace: Namespace.ID
     var course: Course = Course.fakeCourses[0]
     
+    @State private var dragOffset: CGSize = .zero
     @State private var appear = [false, false, false]
 }
 
@@ -29,6 +30,28 @@ extension CourseView {
                     .opacity(appear[2] ? 1 : 0)
             }
             .background(Color("Background"))
+            .mask(RoundedRectangle(cornerRadius: dragOffset.width / 3, style: .continuous))
+            .shadow(
+                color: .black.opacity(0.3),
+                radius: 30,
+                x: 0,
+                y: 10
+            )
+            .scaleEffect(dragOffset.width / -500 + 1)
+            .background(.black.opacity(dragOffset.width / 500))
+            .background(.ultraThinMaterial)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        guard value.translation.width > 0 else { return }
+                        dragOffset = value.translation
+                    }
+                    .onEnded { value in
+                        withAnimation(.closeCardSpring) {
+                            dragOffset = .zero
+                        }
+                    }
+            )
             .ignoresSafeArea()
             
             closeButton
