@@ -9,7 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var hasScrolled = true
-    @State var show = false
+    @State private var show = false
+    @State private var showStatusBar = true
     
     @Namespace var namespace
     
@@ -32,7 +33,7 @@ struct HomeView: View {
                         namespace: namespace
                     )
                     .onTapGesture {
-                        withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                        withAnimation(.openCardSpring) {
                             show.toggle()
                         }
                     }
@@ -54,6 +55,12 @@ struct HomeView: View {
                     show: $show,
                     namespace: namespace
                 )
+            }
+        }
+        .statusBar(hidden: !showStatusBar)
+        .onChange(of: show) { newValue in
+            withAnimation(.closeCardSpring) {
+                showStatusBar = newValue ? false : true
             }
         }
     }

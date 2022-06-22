@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		661F2EC028632800001FD8F2 /* CourseItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F2EBF28632800001FD8F2 /* CourseItemView.swift */; };
 		661F2EC228632897001FD8F2 /* CourseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F2EC128632897001FD8F2 /* CourseView.swift */; };
+		661F2EC428634688001FD8F2 /* AnimationStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661F2EC328634688001FD8F2 /* AnimationStyles.swift */; };
 		662FAEF02854DA70001799A8 /* BlobView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 662FAEEF2854DA70001799A8 /* BlobView.swift */; };
 		6633481F285638ED0016A16F /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6633481E285638ED0016A16F /* TabItem.swift */; };
 		6633482128563C400016A16F /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6633482028563C400016A16F /* Tab.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		661F2EBF28632800001FD8F2 /* CourseItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseItemView.swift; sourceTree = "<group>"; };
 		661F2EC128632897001FD8F2 /* CourseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseView.swift; sourceTree = "<group>"; };
+		661F2EC328634688001FD8F2 /* AnimationStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationStyles.swift; sourceTree = "<group>"; };
 		662FAEEF2854DA70001799A8 /* BlobView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobView.swift; sourceTree = "<group>"; };
 		6633481E285638ED0016A16F /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		6633482028563C400016A16F /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				667612892851967F00240720 /* StrokeStyles.swift */,
 				664AFF982858DADB00D10E45 /* FontModifiers.swift */,
+				661F2EC328634688001FD8F2 /* AnimationStyles.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				6676128C2851C18B00240720 /* AccountView.swift in Sources */,
 				66ADD06D28545726004165EE /* HexagonView.swift in Sources */,
+				661F2EC428634688001FD8F2 /* AnimationStyles.swift in Sources */,
 				664AFF972858D40400D10E45 /* ScrollViewPreferenceKey.swift in Sources */,
 				6633482128563C400016A16F /* Tab.swift in Sources */,
 				6676128A2851967F00240720 /* StrokeStyles.swift in Sources */,
