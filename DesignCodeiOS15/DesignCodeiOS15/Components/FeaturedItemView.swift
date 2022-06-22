@@ -58,6 +58,6 @@ struct FeaturedItemView: View {
 
 struct FeaturedItemView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturedItemView(course: Course.fakeData.first!)
+        FeaturedItemView(course: Course.fakeFeaturedCourses.first!)
     }
 }
