@@ -12,6 +12,9 @@ struct NavigationBar: View {
     
     @Binding var hasScrolled: Bool
     
+    @State var isSearchTapped: Bool = false
+    @State var isProfileTapped: Bool = false
+    
     var body: some View {
         ZStack {
             Color.clear
@@ -30,32 +33,46 @@ struct NavigationBar: View {
                 .offset(y: hasScrolled ? -4 : 0)
             
             HStack(spacing: 16) {
-                Image(systemName: "magnifyingglass")
-                    .font(.body.weight(.bold))
-                    .frame(width: 36, height: 36)
-                    .foregroundColor(.secondary)
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(
-                            cornerRadius: 14,
-                            style: .continuous
+                Button {
+                    isSearchTapped = true
+                } label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(.body.weight(.bold))
+                        .frame(width: 36, height: 36)
+                        .foregroundColor(.secondary)
+                        .background(
+                            .ultraThinMaterial,
+                            in: RoundedRectangle(
+                                cornerRadius: 14,
+                                style: .continuous
+                            )
                         )
-                    )
-                    .vibrantStrokeStyle(cornerRadius: 14)
+                        .vibrantStrokeStyle(cornerRadius: 14)
+                }
+                .sheet(isPresented: $isSearchTapped) {
+                    SearchView()
+                }
                 
-                Image("Avatar Default")
-                    .resizable()
-                    .frame(width: 26, height: 26)
-                    .cornerRadius(10)
-                    .padding(8)
-                    .background(
-                        .ultraThinMaterial,
-                        in: RoundedRectangle(
-                            cornerRadius: 18,
-                            style: .continuous
+                Button {
+                    isProfileTapped = true
+                } label: {
+                    Image("Avatar Default")
+                        .resizable()
+                        .frame(width: 26, height: 26)
+                        .cornerRadius(10)
+                        .padding(8)
+                        .background(
+                            .ultraThinMaterial,
+                            in: RoundedRectangle(
+                                cornerRadius: 18,
+                                style: .continuous
+                            )
                         )
-                    )
-                    .vibrantStrokeStyle(cornerRadius: 18)
+                        .vibrantStrokeStyle(cornerRadius: 18)
+                }
+                .sheet(isPresented: $isProfileTapped) {
+                    AccountView()
+                }
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.trailing, 20)
